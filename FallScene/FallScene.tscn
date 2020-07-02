@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://FallScene/Sprites/LenaFallSprite.png" type="Texture" id=1]
+[ext_resource path="res://FallScene/Sprites/HouseBackground.jpg" type="Texture" id=2]
+[ext_resource path="res://FallScene/Sprites/wind.png" type="Texture" id=3]
+[ext_resource path="res://FallScene/HouseBackground.gd" type="Script" id=4]
+[ext_resource path="res://FallScene/Lena.gd" type="Script" id=5]
+[ext_resource path="res://FallScene/FallScene.gd" type="Script" id=6]
+
+
+[sub_resource type="ParticlesMaterial" id=1]
+trail_divisor = 2
+emission_shape = 2
+emission_box_extents = Vector3( 640, 360, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 2.0
+gravity = Vector3( 0, -90, 0 )
+initial_velocity = 482.76
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 34.48
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 75.9193
+height = 464.714
+
+[node name="FallScene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="HouseBackground" type="Sprite" parent="."]
+position = Vector2( -2725.25, -440.909 )
+scale = Vector2( 2.84734, 2.84734 )
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 4 )
+
+[node name="Wind" type="Particles2D" parent="."]
+position = Vector2( 642.245, 478.981 )
+amount = 30
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Lena" type="KinematicBody2D" parent="."]
+position = Vector2( 639.224, 87.6812 )
+scale = Vector2( 0.453111, 0.453111 )
+collision_mask = 4
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Lena"]
+rotation = 1.57079
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lena"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="RightCollision" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PoolVector2Array( -64, 768, 1344, 768, 1344, -64, -64, -64, -64, 704, 0, 704, 0, 0, 1280, 0, 1280, 720, 0, 704, -64, 704 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://FallScene/FlyingPigeon.gd" type="Script" id=1]
+[ext_resource path="res://FallScene/Sprites/flying_pigeon.png" type="Texture" id=2]
+
+
+[node name="FlyingPigeon" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -100.325, -64.1546, -21.2804, 4.37842, 112.422, 11.9465, 100.65, 27.0826, -0.678467, 36.7529, -58.2799, 59.8776, -96.5407, 40.1165, -79.7227, 5.2193, -117.984, -49.439 )
