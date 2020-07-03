@@ -1,27 +1,29 @@
 extends Node2D
 
 const FLYING_PIGEON = preload("Pigeons/FlyingPigeon.tscn")
-const MAX_DELAY = 3000
-const MIN_DELAY = 2000
-const DECREASE_VAL = 100
+const BACK_Y_START = -440
+const BACK_Y_END = -2296
 
-var pigeonAddDelay = MAX_DELAY
-var prevDelay = MAX_DELAY
+var flying = false
+var flyProgress: float = 0
 
 func _ready():
 	$LenaAnimation.connect("animation_finished", self, "startPlaying")
 	$LenaAnimation.play("window_fall")
 	
 func startPlaying(_ignored):
+	flying = true
+	$BackgroundWind.play()
+	$Wind.visible = true
 	$Lena.enableControls()
 
 func addPigeon():
-	pass
-	#add_child(FLYING_PIGEON.instance())
+	add_child(FLYING_PIGEON.instance())
 
 func _process(delta):
-	pigeonAddDelay -= 1
-	if pigeonAddDelay <= 0:
-		addPigeon()
-		prevDelay = max(prevDelay - DECREASE_VAL, MIN_DELAY)
-		pigeonAddDelay = prevDelay
+	if flying:
+		if(flyProgress >= 1):
+			$BackgroundWind.stop()
+		else:
+			flyProgress += 0.000016
+			$HouseBackground.position.y = BACK_Y_START + (flyProgress * (BACK_Y_END - BACK_Y_START))

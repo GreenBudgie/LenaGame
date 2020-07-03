@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://FallScene/Sprites/LenaFallSprite.png" type="Texture" id=1]
 [ext_resource path="res://FallScene/Sprites/HouseBackground.jpg" type="Texture" id=2]
 [ext_resource path="res://FallScene/Sprites/wind.png" type="Texture" id=3]
+[ext_resource path="res://FallScene/Animation/wind_blow.wav" type="AudioStream" id=4]
 [ext_resource path="res://FallScene/Lena.gd" type="Script" id=5]
 [ext_resource path="res://FallScene/FallScene.gd" type="Script" id=6]
 [ext_resource path="res://FallScene/Animation/glass_break.wav" type="AudioStream" id=7]
@@ -159,12 +160,13 @@ tracks/8/keys = {
 script = ExtResource( 6 )
 
 [node name="HouseBackground" type="Sprite" parent="."]
-position = Vector2( -2725.25, -440.909 )
+position = Vector2( -2725, -440 )
 scale = Vector2( 2.84734, 2.84734 )
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Wind" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 642.245, 478.981 )
 amount = 30
 process_material = SubResource( 1 )
@@ -205,3 +207,7 @@ polygon = PoolVector2Array( -64, 768, 1344, 768, 1344, -64, -64, -64, -64, 704, 
 
 [node name="LenaAnimation" type="AnimationPlayer" parent="."]
 anims/window_fall = SubResource( 3 )
+
+[node name="BackgroundWind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
