@@ -5,13 +5,6 @@ const MAX_DELAY = 3000
 const MIN_DELAY = 2000
 const DECREASE_VAL = 100
 
-enum STATE {
-	WINDOW_FALL,
-	PLAYING,
-	TRASH_FALLING
-}
-
-var state = STATE.WINDOW_FALL
 var pigeonAddDelay = MAX_DELAY
 var prevDelay = MAX_DELAY
 
@@ -19,12 +12,12 @@ func _ready():
 	$LenaAnimation.connect("animation_finished", self, "startPlaying")
 	$LenaAnimation.play("window_fall")
 	
-func startPlaying():
-	print(1)
+func startPlaying(_ignored):
 	$Lena.enableControls()
 
 func addPigeon():
-	add_child(FLYING_PIGEON.instance())
+	pass
+	#add_child(FLYING_PIGEON.instance())
 
 func _process(delta):
 	pigeonAddDelay -= 1
