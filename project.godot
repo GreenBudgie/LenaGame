@@ -25,7 +25,8 @@ run/main_scene="res://Menu/Menu.tscn"
 
 [autoload]
 
-SceneChanger="*res://SceneChanger.tscn"
+SceneChanger="*res://Globals/SceneChanger.tscn"
+TimeHolder="*res://Watch/TimeHolder.tscn"
 
 [display]
 

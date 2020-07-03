@@ -13,6 +13,7 @@ func _ready():
 	
 func startPlaying(_ignored):
 	flying = true
+	TimeHolder.startCounting()
 	$BackgroundWind.play()
 	$Wind.visible = true
 	$Lena.enableControls()
