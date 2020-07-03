@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://BeginVideo/BeginningVideo.webm" type="VideoStream" id=1]
 [ext_resource path="res://BeginVideo/VideoPlayer.gd" type="Script" id=2]
 [ext_resource path="res://BeginVideo/Skip.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "audio_fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VideoPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
 
 [node name="Video" type="Node2D"]
 
@@ -26,3 +41,6 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioFader" type="AnimationPlayer" parent="."]
+anims/audio_fade = SubResource( 1 )

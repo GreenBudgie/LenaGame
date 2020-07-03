@@ -27,7 +27,7 @@ height = 464.714
 
 [sub_resource type="Animation" id=3]
 resource_name = "window_fall"
-length = 5.0
+length = 2.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Lena:position:x")
 tracks/0/interp = 1
@@ -162,7 +162,7 @@ shape = SubResource( 2 )
 
 [node name="GlassBreak" type="AudioStreamPlayer" parent="Lena"]
 stream = ExtResource( 7 )
-volume_db = -30.0
+volume_db = -20.0
 
 [node name="WindFlap" type="AudioStreamPlayer" parent="Lena"]
 stream = ExtResource( 8 )

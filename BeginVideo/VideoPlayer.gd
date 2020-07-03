@@ -1,7 +1,7 @@
 extends VideoPlayer
 
 func _ready():
-	connect("finished", self, "finished")
+	connect("finished", self, "onFinish")
 
-func finished():
-	SceneChanger.changeScene("res://FallScene/FallScene.tscn")
+func onFinish():
+	get_tree().change_scene("res://FallScene/FallScene.tscn")

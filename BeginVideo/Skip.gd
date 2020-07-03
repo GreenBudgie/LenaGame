@@ -2,5 +2,5 @@ extends Button
 
 func _pressed():
 	var videoPlayer = get_parent().get_node("VideoPlayer")
-	videoPlayer.volume = 0
+	get_parent().get_node("AudioFader").play("audio_fade")
 	videoPlayer.emit_signal("finished")

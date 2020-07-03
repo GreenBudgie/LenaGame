@@ -16,10 +16,12 @@ var pigeonAddDelay = MAX_DELAY
 var prevDelay = MAX_DELAY
 
 func _ready():
-	SceneChanger.connect("sceneChanged", self, "playAnimation")
-
-func playAnimation():
+	$LenaAnimation.connect("animation_finished", self, "startPlaying")
 	$LenaAnimation.play("window_fall")
+	
+func startPlaying():
+	print(1)
+	$Lena.enableControls()
 
 func addPigeon():
 	add_child(FLYING_PIGEON.instance())

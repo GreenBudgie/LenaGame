@@ -8,6 +8,12 @@ var moveVector = Vector2.ZERO
 
 onready var sprite = $Sprite
 
+func enableControls():
+	controllable = true
+	
+func disableControls():
+	controllable = false
+
 func _physics_process(delta):
 	if controllable:
 		var xMove = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
