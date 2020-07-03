@@ -1,5 +1,5 @@
 extends Button
 
 func _pressed():
-	
-	get_tree().change_scene("res://FallScene/FallScene.tscn")
+	SceneChanger.changeScene("res://BeginVideo/Video.tscn")
+	$ClickSound.play()

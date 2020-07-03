@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wind_blow.wav-dd5a0fb55a2a5c27b2a622277d75dd4c.sample"
+
+[deps]
+
+source_file="res://FallScene/Animation/wind_blow.wav"
+dest_files=[ "res://.import/wind_blow.wav-dd5a0fb55a2a5c27b2a622277d75dd4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

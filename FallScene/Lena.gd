@@ -3,7 +3,7 @@ extends KinematicBody2D
 const ACCELERATION = 50
 const SPEED = 400
 const MAX_ROTATION = deg2rad(5)
-var controllable = true
+var controllable = false
 var moveVector = Vector2.ZERO
 
 onready var sprite = $Sprite

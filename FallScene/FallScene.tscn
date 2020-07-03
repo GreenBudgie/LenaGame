@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://FallScene/Sprites/LenaFallSprite.png" type="Texture" id=1]
 [ext_resource path="res://FallScene/Sprites/HouseBackground.jpg" type="Texture" id=2]
 [ext_resource path="res://FallScene/Sprites/wind.png" type="Texture" id=3]
-[ext_resource path="res://FallScene/HouseBackground.gd" type="Script" id=4]
 [ext_resource path="res://FallScene/Lena.gd" type="Script" id=5]
 [ext_resource path="res://FallScene/FallScene.gd" type="Script" id=6]
-
+[ext_resource path="res://FallScene/Animation/glass_break.wav" type="AudioStream" id=7]
+[ext_resource path="res://FallScene/Animation/wind_flap.wav" type="AudioStream" id=8]
 
 [sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 2
@@ -25,6 +25,108 @@ tangential_accel = 34.48
 radius = 75.9193
 height = 464.714
 
+[sub_resource type="Animation" id=3]
+resource_name = "window_fall"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Lena:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 744, -0.25, 0, 0.244262, 175.543, 926.973, -0.228045, -0.64679, 0.235594, 0.35321, 644.63, -0.239763, 222.902, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.5, 2.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Lena:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 176, -0.25, 0, 0.25, 0, 240, -0.269673, -9.67346, 0.264121, 16.3265, 328, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.5, 2.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Lena:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.415076, 1045.1, 1440, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 2.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Lena:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.5, 2.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Lena:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.5, 2.5 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Lena/GlassBreak:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Lena/WindFlap:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.6, 0.7, 0.9, 1.2, 1.5, 1.9, 2.49157, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, true, true, true, true, true, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Lena/WindFlap:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -15.0, -2.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Lena:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="FallScene" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -33,7 +135,6 @@ position = Vector2( -2725.25, -440.909 )
 scale = Vector2( 2.84734, 2.84734 )
 texture = ExtResource( 2 )
 centered = false
-script = ExtResource( 4 )
 
 [node name="Wind" type="Particles2D" parent="."]
 position = Vector2( 642.245, 478.981 )
@@ -42,8 +143,9 @@ process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Lena" type="KinematicBody2D" parent="."]
-position = Vector2( 639.224, 87.6812 )
-scale = Vector2( 0.453111, 0.453111 )
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 744, 176 )
+scale = Vector2( 0.2, 0.2 )
 collision_mask = 4
 script = ExtResource( 5 )
 __meta__ = {
@@ -58,9 +160,20 @@ texture = ExtResource( 1 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
+[node name="GlassBreak" type="AudioStreamPlayer" parent="Lena"]
+stream = ExtResource( 7 )
+volume_db = -30.0
+
+[node name="WindFlap" type="AudioStreamPlayer" parent="Lena"]
+stream = ExtResource( 8 )
+volume_db = -15.0
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
 [node name="RightCollision" type="CollisionPolygon2D" parent="Bounds"]
 polygon = PoolVector2Array( -64, 768, 1344, 768, 1344, -64, -64, -64, -64, 704, 0, 704, 0, 0, 1280, 0, 1280, 720, 0, 704, -64, 704 )
+
+[node name="LenaAnimation" type="AnimationPlayer" parent="."]
+anims/window_fall = SubResource( 3 )
