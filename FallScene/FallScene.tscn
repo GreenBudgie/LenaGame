@@ -28,11 +28,10 @@ tangential_accel = 34.48
 radius = 75.9193
 height = 464.714
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "obstacle_collide"
 
-[sub_resource type="Animation" id=3]
-resource_name = "window_fall"
+[sub_resource type="Animation" id=4]
 length = 2.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Lena:position:x")
@@ -219,8 +218,8 @@ collision_mask = 0
 polygon = PoolVector2Array( -64, 768, 1344, 768, 1344, -64, -64, -64, -64, 704, 0, 720, 0, 0, 1280, 0, 1280, 720, 0, 720, -64, 704 )
 
 [node name="LenaAnimation" type="AnimationPlayer" parent="."]
-anims/obstacle_collide = SubResource( 4 )
-anims/window_fall = SubResource( 3 )
+anims/obstacle_collide = SubResource( 3 )
+anims/window_fall = SubResource( 4 )
 
 [node name="BackgroundWind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

@@ -4,7 +4,6 @@
 [ext_resource path="res://FallScene/Sprites/flying_pigeon.png" type="Texture" id=2]
 
 [node name="FlyingPigeon" type="Area2D"]
-scale = Vector2( 0.5, 0.5 )
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -12,8 +11,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -100.325, -64.1546, -21.2804, 4.37842, 112.422, 11.9465, 100.65, 27.0826, -0.678467, 36.7529, -58.2799, 59.8776, -96.5407, 40.1165, -79.7227, 5.2193, -117.984, -49.439 )
+polygon = PoolVector2Array( -52.5599, -31.5121, -9.77991, 3.13609, 55.6275, 7.73228, 54.2133, 13.3891, -2.35529, 18.6924, -22.5078, 31.0668, -46.5495, 20.8138, -37.3571, 7.37874, -56.449, -20.9055 )
