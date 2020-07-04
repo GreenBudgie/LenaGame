@@ -1,33 +1,45 @@
 extends RigidBody2D
 
-const MAX_ANGLE = 30
 var HEIGHT = ProjectSettings.get("display/window/size/height")
+var WIDTH = ProjectSettings.get("display/window/size/width")
 
-var jumped = false
 var direction
-var velocity = 400
+var facingRight = false
+
+var delay = 0
 
 func _ready():
 	randomize()
-	position.x = ProjectSettings.get("display/window/size/width") + 20
-	position.y = rand_range(50, HEIGHT - 60)
+	if randf() > 0.5:
+		position.x = WIDTH + 40
+	else:
+		position.x = -40
+		$Sprite.scale.x = -$Sprite.scale.x
+		facingRight = true
+	position.y = rand_range(HEIGHT - 200, HEIGHT)
 	jump()
+	connect("body_entered", self, "collide")
+	
+func collide(body):
+	if body == get_parent().get_node("Lena"):
+		get_parent().obstacleCollide()
+		queue_free()
 
 func jump():
-	if not jumped:
-		jumped = true
-		direction = rand_range(250 - MAX_ANGLE, 250 + MAX_ANGLE)
-		var force = Vector2(cos(deg2rad(direction)) * velocity, sin(deg2rad(direction)) * velocity)
-		applied_force = Vector2.ZERO
-		linear_velocity = Vector2.ZERO
-		add_central_force(force)
-		apply_central_impulse(force)
+	if delay <= 0:
+		direction = rand_range(230, 260)
+		var vel = rand_range(450, 650)
+		var right = 1
+		if facingRight: right = -1
+		var force = Vector2(cos(deg2rad(direction)) * vel * right, sin(deg2rad(direction)) * vel)
+		linear_velocity = force
+		delay = 10
 
 func _physics_process(delta):
-	print(jumped)
-	if position.y < HEIGHT - 200:
-		jumped = false
-	if position.y > HEIGHT - 100:
+	if delay > 0: delay -= 1
+	if position.y > HEIGHT:
 		jump()
-	if position.x < -50:
+	if facingRight and position.x > WIDTH + 50:
+		queue_free()
+	if !facingRight and position.x < -50:
 		queue_free()

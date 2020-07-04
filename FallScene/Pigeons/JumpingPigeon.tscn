@@ -5,8 +5,8 @@
 
 [node name="JumpingPigeon" type="RigidBody2D"]
 collision_layer = 2
-mass = 30.0
-gravity_scale = 4.0
+mass = 10.0
+gravity_scale = 2.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
