@@ -15,6 +15,7 @@ func _ready():
 	else:
 		position.x = -40
 		$Sprite.scale.x = -$Sprite.scale.x
+		$CollisionPolygon2D.scale.x = -$CollisionPolygon2D.scale.x
 		facingRight = true
 	position.y = rand_range(HEIGHT - 200, HEIGHT)
 	jump()

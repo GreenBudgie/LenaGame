@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://FallScene/Sprites/LenaFallSprite.png" type="Texture" id=1]
 [ext_resource path="res://FallScene/Sprites/HouseBackground.jpg" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://FallScene/Animation/wind_flap.wav" type="AudioStream" id=8]
 [ext_resource path="res://Watch/Watch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://FallScene/PigeonSpawner.gd" type="Script" id=10]
+[ext_resource path="res://FallScene/Pigeons/collide.wav" type="AudioStream" id=11]
 
 [sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 2
@@ -28,8 +29,20 @@ tangential_accel = 34.48
 radius = 75.9193
 height = 464.714
 
-[sub_resource type="Animation" id=3]
-resource_name = "obstacle_collide"
+[sub_resource type="Animation" id=5]
+resource_name = "white_screen"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lena:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2.14354, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 2.5
@@ -185,9 +198,9 @@ __meta__ = {
 }
 
 [node name="Lena" type="KinematicBody2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 744, 176 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 644.63, 328 )
+rotation = 25.1327
+scale = Vector2( 0.5, 0.5 )
 collision_mask = 4
 script = ExtResource( 5 )
 __meta__ = {
@@ -210,6 +223,8 @@ volume_db = -20.0
 stream = ExtResource( 8 )
 volume_db = -2.0
 
+[node name="Tween" type="Tween" parent="Lena"]
+
 [node name="Bounds" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
@@ -218,7 +233,7 @@ collision_mask = 0
 polygon = PoolVector2Array( -64, 768, 1344, 768, 1344, -64, -64, -64, -64, 704, 0, 720, 0, 0, 1280, 0, 1280, 720, 0, 720, -64, 704 )
 
 [node name="LenaAnimation" type="AnimationPlayer" parent="."]
-anims/obstacle_collide = SubResource( 3 )
+anims/white_screen = SubResource( 5 )
 anims/window_fall = SubResource( 4 )
 
 [node name="BackgroundWind" type="AudioStreamPlayer" parent="."]
@@ -227,3 +242,7 @@ volume_db = -10.0
 
 [node name="PigeonSpawner" type="Timer" parent="."]
 script = ExtResource( 10 )
+
+[node name="CollideSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -5.0

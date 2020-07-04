@@ -5,6 +5,7 @@ const BACK_Y_END = -2296
 
 var flying = false
 var flyProgress: float = 0
+var collided = false
 
 func _ready():
 	$LenaAnimation.connect("animation_finished", self, "startPlaying")
@@ -26,15 +27,17 @@ func fallInTrash():
 	$PigeonSpawner.stopSpawning()
 
 func obstacleCollide():
-	$LenaAnimation.play("obstacle_collide")
+	collided = true
+	$LenaAnimation.play("white_screen")
+	$CollideSound.play()
+	$Lena.onCollide()
+	collided = false
 
 func _process(delta):
 	if flying:
 		if(flyProgress >= 1):
 			fallInTrash()
 		else:
-			if $LenaAnimation.is_playing() and $LenaAnimation.current_animation == "obstacle_collide":
-				flyProgress -= 0.000032
-			else:
+			if !collided:
 				flyProgress += 0.000016
 			$HouseBackground.position.y = BACK_Y_START + (flyProgress * (BACK_Y_END - BACK_Y_START))

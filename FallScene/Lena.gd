@@ -7,12 +7,33 @@ var controllable = false
 var moveVector = Vector2.ZERO
 
 onready var sprite = $Sprite
+onready var tween = $Tween
 
 func enableControls():
 	controllable = true
 	
 func disableControls():
 	controllable = false
+
+func onCollide():
+	disableControls()
+	tween.interpolate_property($Sprite,
+			"rotation", 
+			$Sprite.rotation, 
+			$Sprite.rotation + PI * 2, 
+			1, 
+			Tween.TRANS_EXPO,
+			Tween.EASE_OUT)
+	tween.interpolate_property(get_parent(),
+		"flyProgress",
+		get_parent().flyProgress,
+		get_parent().flyProgress - 0.02,
+		1,
+		Tween.TRANS_QUAD,
+		Tween.EASE_OUT)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	enableControls()
 
 func _physics_process(delta):
 	if controllable:
