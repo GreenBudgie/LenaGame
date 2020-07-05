@@ -28,6 +28,7 @@ func collide(body):
 
 func jump():
 	if delay <= 0:
+		$JumpSound.play()
 		direction = rand_range(230, 260)
 		var vel = rand_range(450, 650)
 		var right = 1

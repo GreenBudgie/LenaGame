@@ -6,6 +6,8 @@ var changingDirection
 var speed
 var acceleration
 
+onready var spriteStartScale = $Sprite.scale.x
+
 func _ready():
 	randomize()
 	direction = rand_range(-90 - MAX_ANGLE, -90 + MAX_ANGLE)
@@ -14,6 +16,7 @@ func _ready():
 	acceleration = rand_range(3 / 60.0, 5 / 60.0)
 	position.x = rand_range(250, ProjectSettings.get("display/window/size/width") - 250)
 	position.y = ProjectSettings.get("display/window/size/height") + 20
+	$FlySound.play()
 
 func calculateCollision():
 	var fallScene = get_parent()
@@ -28,6 +31,12 @@ func _physics_process(delta):
 	direction = clamp(direction + changingDirection, -90 - MAX_ANGLE, -90 + MAX_ANGLE)
 	position.x += cos(deg2rad(direction)) * speed
 	position.y += sin(deg2rad(direction)) * speed
+	if direction < -90:
+		$Sprite.scale.x = -spriteStartScale
+		$CollisionPolygon2D.scale.x = -1
+	else:
+		$Sprite.scale.x = spriteStartScale
+		$CollisionPolygon2D.scale.x = 1
 	self.calculateCollision()
 	if position.y < -50:
 		queue_free()

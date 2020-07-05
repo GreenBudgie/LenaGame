@@ -12,6 +12,12 @@ func _ready():
 func getTimeRemaining():
 	return timeRemaining
 	
+func pauseCounting():
+	self.paused = true
+	
+func resumeCounting():
+	self.paused = false
+	
 func getTimeRemainingLabel():
 	var seconds = timeRemaining % 60
 	var minutes = timeRemaining / 60

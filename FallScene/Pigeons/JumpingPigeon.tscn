@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://FallScene/Pigeons/JumpingPigeon.gd" type="Script" id=1]
 [ext_resource path="res://FallScene/Sprites/jumping_pigeon.png" type="Texture" id=2]
+[ext_resource path="res://FallScene/Pigeons/pigeon_flap.wav" type="AudioStream" id=3]
 
 [node name="JumpingPigeon" type="RigidBody2D"]
 collision_layer = 2
@@ -20,3 +21,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 23.4457, -44.9797, -25.9985, -30.7458, -38.3595, -13.8898, -52.2188, -16.8864, -61.5833, -8.64574, -54.0917, -4.89996, -34.2392, 22.4441, -24.5002, 23.5679, -30.1188, 40.7984, -25.9985, 44.1696, -21.129, 42.6713, -15.1357, 27.6882, -10.2662, 13.4543, 7.71346, 1.46783, 44.7966, -11.6423, 54.9101, -29.9966, 26.0677, -32.2441, 28.3152, -40.8593 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0

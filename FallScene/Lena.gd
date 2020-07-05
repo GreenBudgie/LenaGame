@@ -7,7 +7,7 @@ var controllable = false
 var moveVector = Vector2.ZERO
 
 onready var sprite = $Sprite
-onready var tween = $Tween
+onready var tween = get_parent().get_node("Tween")
 
 func enableControls():
 	controllable = true
@@ -27,7 +27,7 @@ func onCollide():
 	tween.interpolate_property(get_parent(),
 		"flyProgress",
 		get_parent().flyProgress,
-		get_parent().flyProgress - 0.02,
+		clamp(get_parent().flyProgress - 0.02, 0.0, 1.0),
 		1,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT)
