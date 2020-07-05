@@ -90,10 +90,11 @@ func obstacleCollide():
 		collided = false
 
 func _process(delta):
+	print(delta)
 	if flying:
 		if(flyProgress >= 1):
 			fallInTrash()
 		else:
 			if !collided:
-				flyProgress += 0.000016
+				flyProgress += 0.018 * delta
 			$HouseBackground.position.y = BACK_Y_START + (flyProgress * (BACK_Y_END - BACK_Y_START))
