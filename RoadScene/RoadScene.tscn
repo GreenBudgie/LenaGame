@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://RoadScene/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RoadScene/RoadScene.gd" type="Script" id=2]
+[ext_resource path="res://RoadScene/CarSpawner.gd" type="Script" id=3]
+
+[node name="RoadScene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+
+[node name="CarSpawner" type="Timer" parent="."]
+script = ExtResource( 3 )

@@ -16,6 +16,7 @@ func startPlaying(animation):
 	if animation == "window_fall":
 		flying = true
 		TimeHolder.startCounting()
+		get_node("Lena/Helpers").show()
 		$BackgroundWind.play()
 		$Wind.visible = true
 		$Lena.enableControls()
@@ -90,7 +91,6 @@ func obstacleCollide():
 		collided = false
 
 func _process(delta):
-	print(delta)
 	if flying:
 		if(flyProgress >= 1):
 			fallInTrash()

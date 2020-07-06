@@ -27,6 +27,7 @@ run/main_scene="res://Menu/Menu.tscn"
 
 SceneChanger="*res://Globals/SceneChanger.tscn"
 TimeHolder="*res://Watch/TimeHolder.tscn"
+Globals="*res://Globals/Globals.gd"
 
 [display]
 
