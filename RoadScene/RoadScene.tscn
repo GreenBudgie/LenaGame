@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://RoadScene/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RoadScene/RoadScene.gd" type="Script" id=2]
@@ -9,12 +9,66 @@
 [ext_resource path="res://RoadScene/ProgressBar.gd" type="Script" id=7]
 [ext_resource path="res://RoadScene/Sound/road_ambient.wav" type="AudioStream" id=8]
 [ext_resource path="res://RoadScene/Sound/lena_crush.wav" type="AudioStream" id=9]
+[ext_resource path="res://RoadScene/Sound/start_sound.wav" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ambient:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AnimAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 1 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Lena:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 0.353554, 1 ),
+"update": 0,
+"values": [ Vector2( 1352.27, 360 ), Vector2( 1352.27, 360 ), Vector2( 1150, 360 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 2.54912, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1280, 0 ) ]
+}
 
 [node name="RoadScene" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
-position = Vector2( 8, 0 )
 region_rect = Rect2( 0, 0, 3840, 720 )
 
 [node name="Watch" parent="." instance=ExtResource( 5 )]
@@ -24,15 +78,23 @@ z_index = 1
 script = ExtResource( 3 )
 
 [node name="Lena" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1150, 360 )
+position = Vector2( 1352.27, 360 )
 
 [node name="ProgressBar" parent="." instance=ExtResource( 6 )]
 script = ExtResource( 7 )
 
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -80.0
 autoplay = true
 
 [node name="Crush" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 1 )
+
+[node name="AnimAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -20.0

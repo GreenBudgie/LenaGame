@@ -3,11 +3,8 @@ extends Area2D
 enum Pos {TOP = 120, MIDDLE = 360, BOTTOM = 600}
 
 var currentPos = Pos.MIDDLE
-var controllable = true
+var controllable = false
 
-func _ready():
-	pass
-	
 func up():
 	var towards = Pos.TOP if currentPos == Pos.MIDDLE else (Pos.MIDDLE if currentPos == Pos.BOTTOM else null)
 	if towards != null:

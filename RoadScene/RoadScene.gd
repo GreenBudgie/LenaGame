@@ -8,10 +8,15 @@ onready var pushAnimation = Tween.new()
 
 func _ready():
 	add_child(pushAnimation)
-	startRiding() #TODO
+	$AnimationPlayer.play("start")
+	$AnimationPlayer.connect("animation_finished", self, "finished")
+
+func finished(animation):
+	if animation == "start":
+		startRiding()
 
 func pushBack():
-	if !pushedBack:
+	if !pushedBack and riding:
 		pushedBack = true
 		pushAnimation.interpolate_property(	self, "progress", progress, max(progress - 0.02, 0), 1, 
 											Tween.TRANS_CUBIC, Tween.EASE_OUT)
@@ -29,11 +34,14 @@ func pushBack():
 
 func startRiding():
 	riding = true
+	TimeHolder.resumeCounting()
 	$CarSpawner.startSpawning()
+	get_node("Lena/Helpers").show()
 	$Lena.controllable = true
 
 func finishRiding():
 	riding = false
+	TimeHolder.pauseCounting()
 	$CarSpawner.stopSpawning()
 	$Lena.controllable = false
 	

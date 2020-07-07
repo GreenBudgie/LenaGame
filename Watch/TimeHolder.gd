@@ -4,6 +4,7 @@ signal timeOff()
 
 const START_TIME = 5 * 60
 
+var started = false
 var timeRemaining = START_TIME
 
 func _ready():
@@ -16,6 +17,7 @@ func pauseCounting():
 	self.paused = true
 	
 func resumeCounting():
+	if !started: startCounting()
 	self.paused = false
 	
 func getTimeRemainingLabel():
@@ -24,6 +26,7 @@ func getTimeRemainingLabel():
 	return str(minutes, ":", str(seconds).pad_zeros(2))
 
 func startCounting():
+	started = true
 	start(1)
 
 func count():
