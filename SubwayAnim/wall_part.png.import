@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LenaFallSprite.png-6573c8951746047c4ca04cea750fcd5d.stex"
+path="res://.import/wall_part.png-421a25f915d2f27d8fd02fcaccdf175c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FallScene/Sprites/LenaFallSprite.png"
-dest_files=[ "res://.import/LenaFallSprite.png-6573c8951746047c4ca04cea750fcd5d.stex" ]
+source_file="res://SubwayAnim/wall_part.png"
+dest_files=[ "res://.import/wall_part.png-421a25f915d2f27d8fd02fcaccdf175c.stex" ]
 
 [params]
 

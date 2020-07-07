@@ -1,0 +1,223 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://SubwayAnim/SubwayAnim.gd" type="Script" id=1]
+[ext_resource path="res://SubwayAnim/wall_part.png" type="Texture" id=2]
+[ext_resource path="res://SubwayAnim/wall.png" type="Texture" id=3]
+[ext_resource path="res://General/scooter.png" type="Texture" id=4]
+[ext_resource path="res://General/Lena.png" type="Texture" id=5]
+[ext_resource path="res://SubwayAnim/explosion.png" type="Texture" id=6]
+[ext_resource path="res://SubwayAnim/explosion.wav" type="AudioStream" id=7]
+[ext_resource path="res://SubwayAnim/ride.wav" type="AudioStream" id=8]
+[ext_resource path="res://SubwayAnim/crush.wav" type="AudioStream" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fall"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("LenaPath/LenaPathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScooterPath/ScooterPathFollow:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1.4, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Explosion:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.8, 3.9, 4.2, 5.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Explosion:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.8, 5.9 ),
+"transitions": PoolRealArray( 1, 0.466517 ),
+"update": 0,
+"values": [ Vector2( 0.3609, 0.3609 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ScooterPath/ScooterPathFollow/Scooter:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 2.03096, 3.8 ),
+"transitions": PoolRealArray( 1, 0.707108, 1 ),
+"update": 0,
+"values": [ -165.0, -165.0, 1000.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LenaPath/LenaPathFollow/Lena:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 2.03286, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -161.5, -161.692, 300.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LenaPath/LenaPathFollow/Lena:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("ScooterPath/ScooterPathFollow/Scooter:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0965982, 0.0965982 ), Vector2( 0.194, 0.194 ) ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("Sound")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0, 3.7 )
+}
+tracks/9/type = "audio"
+tracks/9/path = NodePath("Sound2")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 1.5 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 8.19409, -10.9257, 0, 0, 0, 0, -363.276, 111.987, 0, 0, 0, 0, -644.609, 240.363, 0, 0, 0, 0, -895.897, 396.052, 0, 0, 0, 0, -1081.63, 573.593, 0, 0, 0, 0, -1220.93, 778.447, 0, 0, 0, 0, -1289.22, 994.228, 0, 0, 0, 0, -1384.82, 1412.13, 0, 0, 0, 0, -1439.45, 2245.21 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1177, 238, 0, 0, 0, 0, 1049, 283, 0, 0, 0, 0, 939, 336, 0, 0, 0, 0, 820, 444, 0, 0, 0, 0, 733, 328, 0, 0, 0, 0, 620, 230, 0, 0, 0, 0, 461, 194, 0, 0, 0, 0, 284, 211, 0, 0, 0, 0, 182, 277, 0, 0, 0, 0, 65, 432, 0, 0, 0, 0, -27, 642, 0, 0, 0, 0, -84, 895 )
+}
+
+[node name="SubwayAnim" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fall = SubResource( 1 )
+
+[node name="Wall" type="Sprite" parent="."]
+position = Vector2( 0, -127.977 )
+scale = Vector2( 1.43457, 1.43457 )
+texture = ExtResource( 3 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LenaPath" type="Path2D" parent="."]
+position = Vector2( 1180, 244 )
+scale = Vector2( 0.366113, 0.366113 )
+curve = SubResource( 2 )
+
+[node name="LenaPathFollow" type="PathFollow2D" parent="LenaPath"]
+position = Vector2( -1439.45, 2245.21 )
+rotation = 2.82205
+offset = 2991.13
+rotate = false
+
+[node name="Lena" type="Sprite" parent="LenaPath/LenaPathFollow"]
+rotation = 5.23599
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="ScooterPath" type="Path2D" parent="."]
+curve = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ScooterPathFollow" type="PathFollow2D" parent="ScooterPath"]
+position = Vector2( -84, 895 )
+rotation = 2.80352
+offset = 1855.73
+rotate = false
+
+[node name="Scooter" type="Sprite" parent="ScooterPath/ScooterPathFollow"]
+rotation = 17.4533
+scale = Vector2( 0.194, 0.194 )
+texture = ExtResource( 4 )
+
+[node name="Explosion" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 58, 655 )
+rotation = 0.785397
+texture = ExtResource( 6 )
+
+[node name="WallPart" type="Sprite" parent="."]
+position = Vector2( 1183, 164.023 )
+scale = Vector2( 1.435, 1.435 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="Sound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )

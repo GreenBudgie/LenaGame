@@ -8,6 +8,5 @@ var SCREEN_WIDTH = ProjectSettings.get("display/window/size/width")
 func _process(delta):
 	if get_parent().riding:
 		position.x += BACK_SPEED * delta
-		if position.x >= SCREEN_WIDTH:
-			position.x -= BACK_WIDTH
-	
+	if position.x >= SCREEN_WIDTH:
+		position.x -= BACK_WIDTH

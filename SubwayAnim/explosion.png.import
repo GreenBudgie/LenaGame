@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scooter.png-5487330e24f8ef915a9f92bdf70cfdfd.stex"
+path="res://.import/explosion.png-4ee33f327c8264fa86511906a5c1e4e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FallScene/Sprites/scooter.png"
-dest_files=[ "res://.import/scooter.png-5487330e24f8ef915a9f92bdf70cfdfd.stex" ]
+source_file="res://SubwayAnim/explosion.png"
+dest_files=[ "res://.import/explosion.png-4ee33f327c8264fa86511906a5c1e4e0.stex" ]
 
 [params]
 
