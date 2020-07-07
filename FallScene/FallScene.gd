@@ -22,7 +22,7 @@ func startPlaying(animation):
 		$Lena.enableControls()
 		$PigeonSpawner.startSpawning()
 	if animation == "trash_fall":
-		print("END")
+		get_tree().change_scene("res://RoadScene/RoadScene.tscn")
 
 func fallInTrash():
 	flying = false

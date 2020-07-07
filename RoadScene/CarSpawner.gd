@@ -1,8 +1,8 @@
 extends Timer
 
 const START_SPAWN_RATE = 1.0
-const MAX_SPAWN_RATE = 1.9
-const MIN_SPAWN_RATE = 0.3
+const MAX_SPAWN_RATE = 1.8
+const MIN_SPAWN_RATE = 0.35
 const positions = [120, 360, 600]
 
 var CAR = preload("res://RoadScene/Car.tscn")
@@ -18,7 +18,6 @@ func getRandomPos():
 
 func spawnCar():
 	var spawnRate = MIN_SPAWN_RATE + (MAX_SPAWN_RATE - MIN_SPAWN_RATE) * (1 - get_parent().progress)
-	print(spawnRate)
 	var car
 	if randf() > 0.3 or get_parent().progress < 0.4:
 		car = CAR.instance()

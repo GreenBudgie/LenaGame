@@ -8,9 +8,10 @@ onready var LINKS = {
 var fading = false
 
 func _process(delta):
-	for action in LINKS.keys():
-		if Input.is_action_just_pressed(action): press(LINKS.get(action))
-		if Input.is_action_just_released(action): release(LINKS.get(action))
+	if get_parent().controllable:
+		for action in LINKS.keys():
+			if Input.is_action_just_pressed(action): press(LINKS.get(action))
+			if Input.is_action_just_released(action): release(LINKS.get(action))
 
 func show():
 	$FadingAnimation.remove_all()
