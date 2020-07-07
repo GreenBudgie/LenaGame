@@ -27,6 +27,7 @@ func move(towards):
 				Tween.TRANS_SINE,
 				Tween.EASE_IN_OUT)
 	$Tween.start()
+	$MoveSound.play()
 	currentPos = towards
 	
 func _process(delta):

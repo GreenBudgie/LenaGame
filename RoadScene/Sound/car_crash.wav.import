@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/car_crash.wav-db9dc790762a1840c5beae2db889269b.sample"
+
+[deps]
+
+source_file="res://RoadScene/Sound/car_crash.wav"
+dest_files=[ "res://.import/car_crash.wav-db9dc790762a1840c5beae2db889269b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

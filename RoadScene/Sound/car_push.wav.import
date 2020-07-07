@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/car_push.wav-5ae680e722bb6c7d266566839a7b68f3.sample"
+
+[deps]
+
+source_file="res://RoadScene/Sound/car_push.wav"
+dest_files=[ "res://.import/car_push.wav-5ae680e722bb6c7d266566839a7b68f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

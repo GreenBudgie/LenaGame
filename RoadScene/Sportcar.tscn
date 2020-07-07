@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://RoadScene/Sprites/sportcar.png" type="Texture" id=1]
 [ext_resource path="res://RoadScene/Sportcar.gd" type="Script" id=2]
+[ext_resource path="res://RoadScene/Sound/sportcar_ride.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 36.8706
@@ -17,3 +18,8 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -500, 0 )
+stream = ExtResource( 3 )
+max_distance = 1000.0
