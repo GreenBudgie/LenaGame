@@ -2,7 +2,7 @@ extends Node2D
 
 var riding = false
 var pushedBack = false
-var progress = 0.0
+var progress = 0.9
 
 onready var pushAnimation = Tween.new()
 onready var endAnimation = Tween.new()
@@ -70,6 +70,8 @@ func finishRiding():
 	$EndRide.play()
 	yield(get_tree().create_timer(2), "timeout")
 	$Door.play()
+	yield(get_tree().create_timer(0.7), "timeout")
+	get_tree().change_scene("res://SubwayAnim/SubwayAnim.tscn")
 	
 func _process(delta):
 	if riding and !pushedBack:
