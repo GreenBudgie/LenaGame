@@ -1,47 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SubwayScene/Sprites/corridor.png" type="Texture" id=1]
 [ext_resource path="res://SubwayScene/Background.gd" type="Script" id=2]
-[ext_resource path="res://SubwayScene/Sprites/Lena.png" type="Texture" id=3]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 62.9614
-height = 489.831
-
-[sub_resource type="Animation" id=3]
-resource_name = "jump"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 6, 7, 8 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "run"
-length = 0.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
+[ext_resource path="res://SubwayScene/Lena.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubwayScene/SubwayScene.gd" type="Script" id=4]
+[ext_resource path="res://SubwayScene/PeopleSpawner.gd" type="Script" id=5]
 
 [node name="SubwayScene" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -51,21 +17,13 @@ region_enabled = true
 region_rect = Rect2( 0, 400, 3840, 720 )
 script = ExtResource( 2 )
 
-[node name="Lena" type="Area2D" parent="."]
-position = Vector2( 1184.45, 535.143 )
-scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Lena" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1184, 512 )
 
-[node name="Sprite" type="Sprite" parent="Lena"]
-texture = ExtResource( 3 )
-hframes = 9
-frame = 8
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lena"]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 1280, 0, 1280, 672, 0, 672, 0, 0, -64, 0, -64, 720, 1344, 720, 1344, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Lena"]
-anims/jump = SubResource( 3 )
-anims/run = SubResource( 2 )
+[node name="PeopleSpawner" type="Timer" parent="."]
+script = ExtResource( 5 )
