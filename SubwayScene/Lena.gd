@@ -10,19 +10,56 @@ const JUMP_FORCE = 920
 
 var motion = Vector2.ZERO
 var fall = false
+var firstFall = true
+var controllable = true
+var crushed = false
 
 onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 
+var tween = Tween.new()
+
+var walkSounds = 	[
+					preload("res://SubwayScene/Sound/walk1.wav"),
+					preload("res://SubwayScene/Sound/walk2.wav"),
+					preload("res://SubwayScene/Sound/walk3.wav"),
+					preload("res://SubwayScene/Sound/walk4.wav")
+					]
+
+func _ready():
+	add_child(tween)
+
 func onCollide(obj):
-	if obj.status == obj.CollideStatus.JUMP:
-		motion.y = -JUMP_FORCE / 2
+	if get_parent().running:
+		if obj.status == obj.CollideStatus.CRUSH:
+			controllable = false
+			crushed = true
+			motion.y = 0
+			tween.interpolate_property($Sprite, "rotation", $Sprite.rotation, $Sprite.rotation + 2 * PI, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+			tween.interpolate_property(	self, "position:x", position.x, min(position.x + get_parent().currentSpeed, 1280), 
+										1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+			tween.start()
+			yield(tween, "tween_all_completed")
+			controllable = true
+			crushed = false
+		if obj.status == obj.CollideStatus.JUMP:
+			motion.y = -JUMP_FORCE / 2
+
+func playWalkSound():
+	if !$WalkAudio.playing:
+		$WalkAudio.stream = walkSounds[randi() % 4]
+		$WalkAudio.play()
 
 func _physics_process(delta):
+	if controllable and !crushed and $Sprite.rotation != 0:
+		$Sprite.rotation = 0
+	
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	if !controllable: x_input = 0
 	
 	if x_input != 0:
 		if is_on_floor():
+			playWalkSound()
 			animationPlayer.play("run")
 		motion.x += x_input * ACCELERATION * delta * TARGET_FPS
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
@@ -33,10 +70,16 @@ func _physics_process(delta):
 		
 	motion.y += GRAVITY * delta * TARGET_FPS
 	if is_on_floor():
+		if fall:
+			if firstFall:
+				firstFall = false
+			else:
+				$LandSound.play()
 		fall = false
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, FRICTION * delta)
-		if Input.is_action_just_pressed("move_up"):
+		if Input.is_action_just_pressed("move_up") and controllable:
+			$JumpSound.play()
 			animationPlayer.play("jump")
 			motion.y = -JUMP_FORCE
 	else:

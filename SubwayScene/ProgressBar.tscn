@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://General/scale.png" type="Texture" id=1]
+[ext_resource path="res://SubwayScene/Sprites/train_bar.png" type="Texture" id=2]
+[ext_resource path="res://General/Lena.png" type="Texture" id=3]
+
+[node name="ProgressBar" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Finish" type="Sprite" parent="."]
+position = Vector2( 320, 40 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 2 )
+
+[node name="Lena" type="Sprite" parent="."]
+position = Vector2( 960, 40 )
+scale = Vector2( 0.12, 0.12 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="Scale" type="Sprite" parent="."]
+position = Vector2( 640, 40 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 550, 40 )

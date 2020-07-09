@@ -18,7 +18,8 @@ func checkCollisions():
 			status = CollideStatus.PUSH
 		onCollide()
 		get_node("../Lena").onCollide(self)
-		get_parent().collide(self)
+		if status == CollideStatus.CRUSH:
+			get_parent().collide()
 
 func onCollide():
 	pass
