@@ -2,7 +2,7 @@ extends Node2D
 
 var riding = false
 var pushedBack = false
-var progress = 0.9
+var progress = 0.0
 
 onready var pushAnimation = Tween.new()
 onready var endAnimation = Tween.new()

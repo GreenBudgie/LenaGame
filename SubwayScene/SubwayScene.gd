@@ -14,7 +14,12 @@ onready var childScript = preload("res://SubwayScene/Children.gd")
 
 func _ready():
 	add_child(tween)
-	startRunning()
+	$AnimationPlayer.play("start")
+	$AnimationPlayer.connect("animation_finished", self, "animationFinished")
+
+func animationFinished(animation):
+	if animation == "start":
+		startRunning()
 
 func startRunning():
 	$Lena.controllable = true

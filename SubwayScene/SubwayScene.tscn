@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://SubwayScene/Sprites/corridor.png" type="Texture" id=1]
 [ext_resource path="res://SubwayScene/Background.gd" type="Script" id=2]
@@ -9,6 +9,59 @@
 [ext_resource path="res://SubwayScene/ProgressBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SubwayScene/ProgressBar.gd" type="Script" id=8]
 [ext_resource path="res://Watch/Watch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubwayScene/Sound/stand.wav" type="AudioStream" id=10]
+[ext_resource path="res://SubwayScene/Sound/fall.wav" type="AudioStream" id=11]
+[ext_resource path="res://SubwayScene/Sound/fly.wav" type="AudioStream" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lena:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1472, 224 ), Vector2( 1108, 612 ), Vector2( 1108, 612 ), Vector2( 1168, 512 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0, 0.8, 2 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Lena:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 720.0, 90.0, 90.0, 0.0 ]
+}
 
 [node name="SubwayScene" type="Node2D"]
 script = ExtResource( 4 )
@@ -22,7 +75,7 @@ region_rect = Rect2( 0, 400, 3840, 720 )
 script = ExtResource( 2 )
 
 [node name="Lena" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1184, 512 )
+position = Vector2( 1168, 512 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -42,3 +95,9 @@ script = ExtResource( 8 )
 
 [node name="Watch" parent="." instance=ExtResource( 9 )]
 z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )

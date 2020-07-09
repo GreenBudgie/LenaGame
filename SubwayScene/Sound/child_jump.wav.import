@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/child_jump.wav-b14e4dfd4b03aa3b9329067416a28778.sample"
+
+[deps]
+
+source_file="res://SubwayScene/Sound/child_jump.wav"
+dest_files=[ "res://.import/child_jump.wav-b14e4dfd4b03aa3b9329067416a28778.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

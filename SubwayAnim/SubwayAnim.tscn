@@ -191,7 +191,7 @@ __meta__ = {
 }
 
 [node name="ScooterPathFollow" type="PathFollow2D" parent="ScooterPath"]
-position = Vector2( -84, 895 )
+position = Vector2( -83.9997, 894.999 )
 rotation = 2.80352
 offset = 1855.73
 rotate = false

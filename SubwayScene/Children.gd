@@ -39,6 +39,7 @@ func onCollide():
 
 func jump():
 	if !jumping:
+		$Jump.play()
 		$JumpTimer.start(rand_range(0.1, 3.5))
 		jumping = true
 		motionY = -JUMP_FORCE

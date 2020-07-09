@@ -11,7 +11,7 @@ const JUMP_FORCE = 920
 var motion = Vector2.ZERO
 var fall = false
 var firstFall = true
-var controllable = true
+var controllable = false
 var crushed = false
 
 onready var sprite = $Sprite
