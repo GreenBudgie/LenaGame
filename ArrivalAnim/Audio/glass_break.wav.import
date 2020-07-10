@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/glass_break.wav-9bf663c3b3badabe18f2a080123c1865.sample"
+
+[deps]
+
+source_file="res://ArrivalAnim/Audio/glass_break.wav"
+dest_files=[ "res://.import/glass_break.wav-9bf663c3b3badabe18f2a080123c1865.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/punch.wav-16c93e2e75a4a85a18650047f6a2b3ca.sample"
+
+[deps]
+
+source_file="res://ArrivalAnim/Audio/punch.wav"
+dest_files=[ "res://.import/punch.wav-16c93e2e75a4a85a18650047f6a2b3ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
