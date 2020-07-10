@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ArrivalAnim/Sprites/booth.png" type="Texture" id=1]
 [ext_resource path="res://ArrivalAnim/Sprites/driver.png" type="Texture" id=2]
@@ -11,10 +11,17 @@
 [ext_resource path="res://ArrivalAnim/Sprites/metro_map.png" type="Texture" id=9]
 [ext_resource path="res://ArrivalAnim/Sprites/train_side.png" type="Texture" id=10]
 [ext_resource path="res://ArrivalAnim/Audio/train_long_ride.wav" type="AudioStream" id=11]
+[ext_resource path="res://ArrivalAnim/Sprites/dybenko.png" type="Texture" id=12]
+[ext_resource path="res://ArrivalAnim/Audio/crush.wav" type="AudioStream" id=13]
+[ext_resource path="res://SubwayScene/Sound/fly.wav" type="AudioStream" id=14]
+[ext_resource path="res://ArrivalAnim/Sprites/dybenko_street.jpg" type="Texture" id=15]
+[ext_resource path="res://ArrivalAnim/Audio/dybenko_fly.wav" type="AudioStream" id=16]
+[ext_resource path="res://ArrivalAnim/Sprites/clouds.jpg" type="Texture" id=17]
+[ext_resource path="res://ArrivalAnim/Audio/wind.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "arrival"
-length = 20.0
+length = 25.0
 step = 0.05
 tracks/0/type = "audio"
 tracks/0/path = NodePath("Audio1")
@@ -39,8 +46,12 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource( 7 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 14 )
 } ],
-"times": PoolRealArray( 0, 2.4, 3.95, 4.4 )
+"times": PoolRealArray( 0, 2.4, 3.95, 4.4, 17.95 )
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Start/Lena:position")
@@ -129,8 +140,20 @@ tracks/7/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource( 11 )
+}, {
+"end_offset": 3.49,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+}, {
+"end_offset": 1.5,
+"start_offset": 0.0,
+"stream": ExtResource( 16 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
 } ],
-"times": PoolRealArray( 2.6, 9.45 )
+"times": PoolRealArray( 2.6, 9.45, 16.95, 18.8, 20.7 )
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Start/Booth:position")
@@ -140,9 +163,9 @@ tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0, 4.45, 5.2, 9.5 ),
-"transitions": PoolRealArray( 1, 1, 1.86607, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -240 ), Vector2( 0, -240 ), Vector2( -88, -240 ), Vector2( -136, -232 ) ]
+"values": [ Vector2( 0, -240 ), Vector2( 0, -240 ), Vector2( 5.72205e-06, -120 ), Vector2( -136, -232 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Start/Booth:rotation_degrees")
@@ -187,10 +210,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 9.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 9.5, 16.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, true, false ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("TrainRide/Train:position")
@@ -199,7 +222,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 9.5, 10.05, 11.05, 12.05, 13.15, 13.95, 14.95, 15.65, 16.35, 17.05 ),
+"times": PoolRealArray( 9.5, 10.05, 11.05, 12.05, 13.15, 13.95, 14.95, 15.65, 16.35, 16.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 56, 528 ), Vector2( 56, 376 ), Vector2( 272, 344 ), Vector2( 520, 448 ), Vector2( 592, 152 ), Vector2( 448, 152 ), Vector2( 384, 312 ), Vector2( 568, 432 ), Vector2( 808, 440 ), Vector2( 1056, 432 ) ]
@@ -211,7 +234,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 9.5, 11.05, 12.05, 13.15, 13.95, 14.95, 15.65, 16.35, 17.05 ),
+"times": PoolRealArray( 9.5, 11.05, 12.05, 13.15, 13.95, 14.95, 15.65, 16.35, 16.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -89.9999, -30.0, 30.948, -74.9999, -207.076, -254.396, -327.89, -359.999, -374.999 ]
@@ -228,6 +251,210 @@ tracks/15/keys = {
 "update": 0,
 "values": [ Vector2( 0.5, 0.5 ) ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("DybenkoStation/Dybenko:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 16.9, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("DybenkoStation/Train2:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 16.9, 17.85 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1559.01, 1301.22 ), Vector2( 822.469, 724.264 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("DybenkoStation/Train2:rotation_degrees")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 16.9, 17.85 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.0227, -33.2353 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("DybenkoStation/Train2:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 16.9, 17.85 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.65003, 3.65003 ), Vector2( 5.1174, 5.1174 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("DybenkoStation/Lena:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 17.85, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("DybenkoStation/Lena:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 17.85, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 724.264, 601.508 ), Vector2( 2246.45, -392.821 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("DybenkoStation/Lena:rotation_degrees")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 17.85, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1000.0 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("DybenkoStation/Lena:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 17.85, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.36706, 1.36706 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("DybenkoStation/Train2:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 16.9, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Street/Dybenko:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 18.7, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Street/Lena:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 18.7, 18.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Street/Lena:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 18.8, 20.7 ),
+"transitions": PoolRealArray( 0.554784, 1 ),
+"update": 0,
+"values": [ Vector2( 680, 384 ), Vector2( 1456, 40 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Street/Lena:rotation_degrees")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 18.8, 20.7 ),
+"transitions": PoolRealArray( 0.535887, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Street/Lena:scale")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 18.8, 20.7 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.169358, 0.169358 ), Vector2( 1.2992, 1.2992 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Street:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 18.8, 20.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Clouds:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 20.6, 20.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Clouds/Lena:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 20.7, 23.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -256, 392 ), Vector2( 1504, 392 ) ]
+}
 
 [node name="ArrivalAnim" type="Node2D"]
 script = ExtResource( 8 )
@@ -236,12 +463,64 @@ script = ExtResource( 8 )
 anims/arrival = SubResource( 1 )
 
 [node name="Audio1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 14 )
 
 [node name="Audio2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 18 )
+
+[node name="Clouds" type="Position2D" parent="."]
+
+[node name="Clouds" type="Sprite" parent="Clouds"]
+position = Vector2( 640, 368 )
+scale = Vector2( 1.34554, 1.34554 )
+texture = ExtResource( 17 )
+
+[node name="Lena" type="Sprite" parent="Clouds"]
+position = Vector2( 1504, 392 )
+rotation = 1.57079
+scale = Vector2( 0.609481, 0.609481 )
+texture = ExtResource( 3 )
+
+[node name="Street" type="Position2D" parent="."]
+visible = false
+
+[node name="Dybenko" type="Sprite" parent="Street"]
+position = Vector2( 0, -112 )
+scale = Vector2( 1.2502, 1.2502 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="Lena" type="Sprite" parent="Street"]
+position = Vector2( 1456, 40 )
+rotation = 12.5664
+scale = Vector2( 1.2992, 1.2992 )
+texture = ExtResource( 3 )
+
+[node name="DybenkoStation" type="Position2D" parent="."]
+position = Vector2( 224, 168 )
+scale = Vector2( 0.651696, 0.651696 )
+
+[node name="Dybenko" type="Sprite" parent="DybenkoStation"]
+visible = false
+position = Vector2( 656, 232 )
+texture = ExtResource( 12 )
+
+[node name="Train2" type="Sprite" parent="DybenkoStation"]
+visible = false
+position = Vector2( 822.469, 724.264 )
+rotation = -0.580065
+scale = Vector2( 5.1174, 5.1174 )
+texture = ExtResource( 10 )
+
+[node name="Lena" type="Sprite" parent="DybenkoStation"]
+visible = false
+position = Vector2( 2246.45, -392.821 )
+rotation = 17.4533
+scale = Vector2( 1.36706, 1.36706 )
+texture = ExtResource( 3 )
 
 [node name="TrainRide" type="Position2D" parent="."]
+visible = false
 
 [node name="MetroMap" type="Sprite" parent="TrainRide"]
 position = Vector2( 0, -752 )
@@ -251,7 +530,7 @@ centered = false
 
 [node name="Train" type="Sprite" parent="TrainRide"]
 position = Vector2( 1056, 432 )
-rotation = -6.54498
+rotation = -6.54497
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 10 )
 

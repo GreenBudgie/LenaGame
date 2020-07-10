@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dybenko_fly.wav-5e0626e575b3c125b5475fa39a0addc2.sample"
+
+[deps]
+
+source_file="res://ArrivalAnim/Audio/dybenko_fly.wav"
+dest_files=[ "res://.import/dybenko_fly.wav-5e0626e575b3c125b5475fa39a0addc2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
