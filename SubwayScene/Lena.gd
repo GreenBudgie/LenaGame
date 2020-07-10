@@ -13,6 +13,7 @@ var fall = false
 var firstFall = true
 var controllable = false
 var crushed = false
+var applyPhysics = false
 
 onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
@@ -65,10 +66,11 @@ func _physics_process(delta):
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		sprite.flip_h = x_input > 0
 	else:
-		if is_on_floor():
+		if is_on_floor() and controllable:
 			animationPlayer.play("idle")
 		
-	motion.y += GRAVITY * delta * TARGET_FPS
+	if applyPhysics:
+		motion.y += GRAVITY * delta * TARGET_FPS
 	if is_on_floor():
 		if fall:
 			if firstFall:
@@ -83,10 +85,13 @@ func _physics_process(delta):
 			animationPlayer.play("jump")
 			motion.y = -JUMP_FORCE
 	else:
-		if !fall and motion.y > 0:
+		if !fall and motion.y > 0 and controllable:
 			animationPlayer.play_backwards("jump")
 			fall = true
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, AIR_RESISTANCE * delta)
 	
-	motion = move_and_slide(motion, Vector2.UP)
+	if applyPhysics:
+		motion = move_and_slide(motion, Vector2.UP)
+	if !applyPhysics or !controllable:
+		animationPlayer.play("idle")

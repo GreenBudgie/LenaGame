@@ -4,8 +4,8 @@ const START_SPEED = 150
 const END_SPEED = 500
 
 var currentSpeed = START_SPEED
-var running = true
-var progress = 0.0
+var running = false
+var progress = 0.95
 
 var tween = Tween.new()
 
@@ -23,6 +23,7 @@ func animationFinished(animation):
 
 func startRunning():
 	$Lena.controllable = true
+	$Lena.applyPhysics = true
 	TimeHolder.resumeCounting()
 	running = true
 	$PeopleSpawner.startSpawning()
@@ -32,9 +33,23 @@ func stopRunning():
 	TimeHolder.pauseCounting()
 	running = false
 	$PeopleSpawner.stopSpawning()
+	tween.interpolate_property($Ambient, "volume_db", $Ambient.volume_db, -80, 2)
+	tween.interpolate_property($Background, "position:x", $Background.position.x, $Background.position.x + 250, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.interpolate_property($Wagon, "position:x", $Wagon.position.x, 0, 2, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	#Delay 2
+	tween.interpolate_property($Lena, "position:x", $Lena.position.x, 800, 2, Tween.TRANS_EXPO, Tween.EASE_OUT, 2)
+	tween.interpolate_property($Lena, "position:y", $Lena.position.y, 475, 2, Tween.TRANS_EXPO, Tween.EASE_OUT, 2)
+	tween.interpolate_property($Lena, "scale", $Lena.scale, $Lena.scale / 1.5, 2, Tween.TRANS_EXPO, Tween.EASE_OUT, 2)
+	tween.interpolate_property($Lena, "rotation", $Lena.rotation, $Lena.rotation + PI * 4, 2, Tween.TRANS_EXPO, Tween.EASE_OUT, 2)
+	tween.interpolate_property($Lena, "modulate:a", 1, 0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_IN, 2.5)
+	tween.start()
+	
+	$TrainArrive.play()
+	yield(get_tree().create_timer(2), "timeout")
+	$LenaFly.play()
 
 func _process(delta):
-	if progress >= 1:
+	if progress >= 1 and running:
 		stopRunning()
 	currentSpeed = START_SPEED + (END_SPEED - START_SPEED) * progress
 	if running:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://SubwayScene/Sprites/corridor.png" type="Texture" id=1]
 [ext_resource path="res://SubwayScene/Background.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://SubwayScene/Sound/stand.wav" type="AudioStream" id=10]
 [ext_resource path="res://SubwayScene/Sound/fall.wav" type="AudioStream" id=11]
 [ext_resource path="res://SubwayScene/Sound/fly.wav" type="AudioStream" id=12]
+[ext_resource path="res://SubwayScene/Sprites/wagon.png" type="Texture" id=13]
+[ext_resource path="res://SubwayScene/Sound/train_arrive.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -74,6 +76,11 @@ region_enabled = true
 region_rect = Rect2( 0, 400, 3840, 720 )
 script = ExtResource( 2 )
 
+[node name="Wagon" type="Sprite" parent="."]
+position = Vector2( -1144, 456 )
+scale = Vector2( 2.21429, 2.21429 )
+texture = ExtResource( 13 )
+
 [node name="Lena" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1168, 512 )
 
@@ -101,3 +108,9 @@ anims/start = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="TrainArrive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="LenaFly" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
