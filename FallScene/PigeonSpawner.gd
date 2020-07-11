@@ -16,7 +16,7 @@ func stopSpawning():
 	stop()
 
 func spawnPigeon():
-	if randf() > 0.5:
+	if randf() > 0.4 or get_parent().flyProgress < 0.25:
 		get_parent().add_child(FLYING_PIGEON.instance())
 	else:
 		get_parent().add_child(JUMPING_PIGEON.instance())

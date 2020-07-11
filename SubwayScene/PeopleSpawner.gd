@@ -1,9 +1,9 @@
 extends Timer
 
-const THRESHOLD = 0.25
+const THRESHOLD = 0.4
 const START_SPAWN_RATE = 1.0
-const MAX_SPAWN_RATE = 3.0
-const MIN_SPAWN_RATE = 0.5
+const MAX_SPAWN_RATE = 3.25
+const MIN_SPAWN_RATE = 0.8
 
 var GRANNY = preload("res://SubwayScene/Granny.tscn")
 var CHILD = preload("res://SubwayScene/Children.tscn")

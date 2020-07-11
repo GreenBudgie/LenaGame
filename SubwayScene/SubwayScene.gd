@@ -5,7 +5,7 @@ const END_SPEED = 500
 
 var currentSpeed = START_SPEED
 var running = false
-var progress = 0.95
+var progress = 0.0
 
 var tween = Tween.new()
 
@@ -27,6 +27,7 @@ func startRunning():
 	TimeHolder.resumeCounting()
 	running = true
 	$PeopleSpawner.startSpawning()
+	$Lena/Helpers.show()
 	
 func stopRunning():
 	$Lena.controllable = false
@@ -47,17 +48,19 @@ func stopRunning():
 	$TrainArrive.play()
 	yield(get_tree().create_timer(2), "timeout")
 	$LenaFly.play()
+	yield(get_tree().create_timer(3), "timeout")
+	get_tree().change_scene("res://ArrivalAnim/ArrivalAnim.tscn")
 
 func _process(delta):
 	if progress >= 1 and running:
 		stopRunning()
 	currentSpeed = START_SPEED + (END_SPEED - START_SPEED) * progress
 	if running:
-		progress += 0.018 * delta
+		progress += 0.012 * delta
 
 func collide():
 	if running:
-		tween.interpolate_property(	self, "progress", progress, max(progress - 0.02, 0), 1, 
+		tween.interpolate_property(	self, "progress", progress, max(progress - 0.015, 0), 1, 
 									Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tween.interpolate_property(	$Background, "position:x", $Background.position.x, $Background.position.x - currentSpeed,
 									1, Tween.TRANS_CUBIC, Tween.EASE_OUT)

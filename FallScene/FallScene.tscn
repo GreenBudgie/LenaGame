@@ -17,8 +17,6 @@
 [ext_resource path="res://FallScene/Animation/scooter.wav" type="AudioStream" id=15]
 [ext_resource path="res://FallScene/Helpers.tscn" type="PackedScene" id=16]
 
-
-
 [sub_resource type="ParticlesMaterial" id=1]
 trail_divisor = 2
 emission_shape = 2

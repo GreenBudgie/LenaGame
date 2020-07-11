@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://SubwayScene/Sprites/Lena.png" type="Texture" id=1]
 [ext_resource path="res://SubwayScene/Lena.gd" type="Script" id=2]
 [ext_resource path="res://SubwayScene/Sound/jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://SubwayScene/Sound/land.wav" type="AudioStream" id=4]
+[ext_resource path="res://General/helper.png" type="Texture" id=5]
+[ext_resource path="res://SubwayScene/Helpers.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 62.9614
@@ -61,9 +63,6 @@ tracks/0/keys = {
 position = Vector2( 1184.45, 535.143 )
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -94,3 +93,28 @@ volume_db = 8.0
 [node name="LandSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -3.0
+
+[node name="Helpers" type="Position2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Up" type="Sprite" parent="Helpers"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 6.34961, -431.771 )
+rotation = 1.5708
+scale = Vector2( 0.138269, 0.138269 )
+texture = ExtResource( 5 )
+
+[node name="Left" type="Sprite" parent="Helpers"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -266.686, -19.0488 )
+scale = Vector2( 0.138269, 0.138269 )
+texture = ExtResource( 5 )
+
+[node name="Right" type="Sprite" parent="Helpers"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 279.381, -15.874 )
+rotation = 3.14159
+scale = Vector2( 0.138269, 0.138269 )
+texture = ExtResource( 5 )
+
+[node name="FadingAnimation" type="Tween" parent="Helpers"]

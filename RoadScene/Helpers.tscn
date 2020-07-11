@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://RoadScene/Sprites/helper.png" type="Texture" id=1]
+[ext_resource path="res://General/helper.png" type="Texture" id=1]
 [ext_resource path="res://RoadScene/Helpers.gd" type="Script" id=2]
 
 [node name="Helpers" type="Position2D"]

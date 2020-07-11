@@ -59,6 +59,7 @@ func _physics_process(delta):
 	if !controllable: x_input = 0
 	
 	if x_input != 0:
+		$Helpers.fade()
 		if is_on_floor():
 			playWalkSound()
 			animationPlayer.play("run")

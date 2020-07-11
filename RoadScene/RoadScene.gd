@@ -20,7 +20,7 @@ func finished(animation):
 func pushBack():
 	if !pushedBack and riding:
 		pushedBack = true
-		pushAnimation.interpolate_property(	self, "progress", progress, max(progress - 0.02, 0), 1, 
+		pushAnimation.interpolate_property(	self, "progress", progress, max(progress - 0.015, 0), 1, 
 											Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		pushAnimation.interpolate_property(	$Background, "position:x", $Background.position.x,
 											$Background.position.x - 50, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
@@ -75,6 +75,6 @@ func finishRiding():
 	
 func _process(delta):
 	if riding and !pushedBack:
-		progress += 0.018 * delta
+		progress += 0.012 * delta
 	if progress >= 1 and riding:
 		finishRiding()
