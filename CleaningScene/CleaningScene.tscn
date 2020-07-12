@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CleaningScene/CleaningScene.gd" type="Script" id=1]
 [ext_resource path="res://CleaningScene/Sprites/floor.png" type="Texture" id=2]
 [ext_resource path="res://CleaningScene/Lena.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Watch/Watch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://FallScene/Animation/wind_flap.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lena:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -120, 368 ), Vector2( -40, 304 ), Vector2( 56, 392 ), Vector2( 120, 320 ), Vector2( 184, 392 ), Vector2( 240, 312 ), Vector2( 312, 368 ) ]
+}
 
 [node name="CleaningScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,7 +35,7 @@ __meta__ = {
 }
 
 [node name="Lena" parent="." instance=ExtResource( 3 )]
-position = Vector2( 256, 352 )
+position = Vector2( 312, 368 )
 collision_mask = 4
 
 [node name="Camera2D" type="Camera2D" parent="Lena"]
@@ -40,8 +58,25 @@ editor_draw_drag_margin = true
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 0, 720, 5120, 720, 5120, 152, -64, 152, -64, 104, 5184, 104, 5184, 768, -64, 768, -64, 152, 0, 152 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CleanAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 1 )
+
+[node name="Watch" parent="." instance=ExtResource( 4 )]
+z_index = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="WhipSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

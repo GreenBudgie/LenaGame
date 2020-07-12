@@ -278,7 +278,6 @@ scale = Vector2( 4.28142, 4.28142 )
 texture = ExtResource( 3 )
 
 [node name="AudienceForeground" type="Sprite" parent="Audience"]
-scale = Vector2( 1, 1 )
 z_index = 1
 texture = ExtResource( 4 )
 
@@ -291,7 +290,6 @@ flip_h = true
 [node name="Door" type="Sprite" parent="Audience"]
 position = Vector2( 709.297, 365.172 )
 rotation = 1.74846e-07
-scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 offset = Vector2( -640, -368 )
 

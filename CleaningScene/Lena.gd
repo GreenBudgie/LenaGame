@@ -4,7 +4,9 @@ const ACCELERATION = 80
 const MAX_SPEED = 400
 const MOVE_EPSILON = 1
 
+var controllable = false
 var moveVector = Vector2.ZERO
+var animWalking = true
 
 var washSounds = 	[
 					preload("res://CleaningScene/Sound/wash1.wav"),
@@ -43,22 +45,25 @@ func wash():
 					dirt.wash()
 
 func _physics_process(delta):
-	var xMovement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var yMovement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	var vector = Vector2(xMovement, yMovement)
-	vector = vector.normalized()
-	moveVector = moveVector.move_toward(vector * MAX_SPEED, ACCELERATION)
-	moveVector = move_and_slide(moveVector)
-	if isMoving():
-		$AnimationPlayer.play("walk")
+	if animWalking:
 		playWalkSound()
-		if moveVector.x < 0:
-			$Sprite.flip_h = false
-			$Sprite/Mop.flip_h = false
+	if controllable:
+		var xMovement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+		var yMovement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		var vector = Vector2(xMovement, yMovement)
+		vector = vector.normalized()
+		moveVector = moveVector.move_toward(vector * MAX_SPEED, ACCELERATION)
+		moveVector = move_and_slide(moveVector)
+		if isMoving():
+			$AnimationPlayer.play("walk")
+			playWalkSound()
+			if moveVector.x < 0:
+				$Sprite.flip_h = false
+				$Sprite/Mop.flip_h = false
+			else:
+				$Sprite.flip_h = true
+				$Sprite/Mop.flip_h = true
 		else:
-			$Sprite.flip_h = true
-			$Sprite/Mop.flip_h = true
-	else:
-		$AnimationPlayer.play("idle")
-	if Input.is_action_just_pressed("wash"):
-		wash()
+			$AnimationPlayer.play("idle")
+		if Input.is_action_just_pressed("wash"):
+			wash()

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://CleaningScene/Sprites/Lena.png" type="Texture" id=1]
 [ext_resource path="res://CleaningScene/Sprites/mop.png" type="Texture" id=2]
 [ext_resource path="res://CleaningScene/Lena.gd" type="Script" id=3]
+[ext_resource path="res://CleaningScene/Sprites/space.png" type="Texture" id=4]
+[ext_resource path="res://CleaningScene/Space.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 72.0
@@ -79,3 +81,11 @@ shape = SubResource( 4 )
 [node name="WashAudio" type="AudioStreamPlayer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Space" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -448 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="FadingAnimation" type="Tween" parent="Space"]
