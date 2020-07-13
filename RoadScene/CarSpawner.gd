@@ -1,8 +1,8 @@
 extends Timer
 
 const START_SPAWN_RATE = 1.0
-const MAX_SPAWN_RATE = 1.8
-const MIN_SPAWN_RATE = 0.4
+const MAX_SPAWN_RATE = 1.9
+const MIN_SPAWN_RATE = 0.6
 const positions = [120, 360, 600]
 
 var CAR = preload("res://RoadScene/Car.tscn")

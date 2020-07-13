@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BeginVideo/BeginningVideo.webm" type="VideoStream" id=1]
 [ext_resource path="res://BeginVideo/VideoPlayer.gd" type="Script" id=2]
 [ext_resource path="res://BeginVideo/Skip.gd" type="Script" id=3]
+[ext_resource path="res://BeginVideo/skip.png" type="Texture" id=4]
+[ext_resource path="res://BeginVideo/skip_hovered.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "audio_fade"
@@ -31,16 +33,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Skip" type="Button" parent="."]
-margin_left = 1080.0
-margin_top = 648.0
-margin_right = 1262.0
-margin_bottom = 703.0
-text = "Skip"
+[node name="AudioFader" type="AnimationPlayer" parent="."]
+anims/audio_fade = SubResource( 1 )
+
+[node name="SkipButton" type="TextureButton" parent="."]
+margin_left = 1160.0
+margin_top = 632.0
+margin_right = 1268.0
+margin_bottom = 711.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AudioFader" type="AnimationPlayer" parent="."]
-anims/audio_fade = SubResource( 1 )

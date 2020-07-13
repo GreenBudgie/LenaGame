@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 func _pressed():
 	SceneChanger.changeScene("res://BeginVideo/Video.tscn")

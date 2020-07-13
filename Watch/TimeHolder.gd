@@ -1,7 +1,5 @@
 extends Timer
 
-signal timeOff()
-
 const START_TIME = 5 * 60
 
 var started = false
@@ -34,4 +32,5 @@ func startCounting():
 func count():
 	timeRemaining -= 1
 	if(timeRemaining <= 0):
-		emit_signal("timeOff")
+		stop()
+		get_tree().change_scene("res://BadEnding/BadEnding.tscn")
