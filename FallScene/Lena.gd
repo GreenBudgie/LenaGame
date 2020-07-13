@@ -27,7 +27,7 @@ func onCollide():
 	tween.interpolate_property(get_parent(),
 		"flyProgress",
 		get_parent().flyProgress,
-		clamp(get_parent().flyProgress - 0.015, 0.0, 1.0),
+		clamp(get_parent().flyProgress - 0.018, 0.0, 1.0),
 		1,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT)

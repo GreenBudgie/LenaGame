@@ -96,5 +96,5 @@ func _process(delta):
 			fallInTrash()
 		else:
 			if !collided:
-				flyProgress += 0.012 * delta
+				flyProgress += 0.015 * delta
 			$HouseBackground.position.y = BACK_Y_START + (flyProgress * (BACK_Y_END - BACK_Y_START))

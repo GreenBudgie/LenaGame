@@ -6,6 +6,7 @@ const START_TIME = 5 * 60
 
 var started = false
 var timeRemaining = START_TIME
+var zero = false
 
 func _ready():
 	connect("timeout", self, "count")
@@ -21,6 +22,7 @@ func resumeCounting():
 	self.paused = false
 	
 func getTimeRemainingLabel():
+	if zero: return "0:00"
 	var seconds = timeRemaining % 60
 	var minutes = timeRemaining / 60
 	return str(minutes, ":", str(seconds).pad_zeros(2))

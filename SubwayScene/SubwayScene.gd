@@ -56,11 +56,11 @@ func _process(delta):
 		stopRunning()
 	currentSpeed = START_SPEED + (END_SPEED - START_SPEED) * progress
 	if running:
-		progress += 0.012 * delta
+		progress += 0.015 * delta
 
 func collide():
 	if running:
-		tween.interpolate_property(	self, "progress", progress, max(progress - 0.015, 0), 1, 
+		tween.interpolate_property(	self, "progress", progress, max(progress - 0.018, 0), 1, 
 									Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		tween.interpolate_property(	$Background, "position:x", $Background.position.x, $Background.position.x - currentSpeed,
 									1, Tween.TRANS_CUBIC, Tween.EASE_OUT)

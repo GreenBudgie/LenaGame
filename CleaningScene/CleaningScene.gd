@@ -1,6 +1,6 @@
 extends Node2D
 
-const DIRT_COUNT = 20
+const DIRT_COUNT = 25
 const CORRIDOR_WIDTH = 1280 * 4
 
 var DIRT = preload("res://CleaningScene/Dirt.tscn")

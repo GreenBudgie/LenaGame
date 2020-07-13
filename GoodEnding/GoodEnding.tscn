@@ -304,7 +304,7 @@ __meta__ = {
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -10.0
+volume_db = -54.8434
 
 [node name="Audio1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -331,7 +331,7 @@ position = Vector2( 640, 360 )
 texture = ExtResource( 17 )
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.982456 )
 margin_right = 1280.0
 margin_bottom = 720.0
 __meta__ = {
