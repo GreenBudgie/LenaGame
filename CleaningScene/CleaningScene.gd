@@ -28,7 +28,7 @@ func _ready():
 func stop():
 	$Lena/Camera2D.clear_current()
 	$Lena.controllable = false
-	TimeHolder.pauseCounting()
+	TimeHolder.stopCounting()
 	yield(get_tree().create_timer(0.5), "timeout")
 	$WhipSound.play()
 	$Tween.interpolate_property($Lena/Sprite/Mop, "position:y", $Lena/Sprite/Mop.position.y, $Lena/Sprite/Mop.position.y - 720 * 2,

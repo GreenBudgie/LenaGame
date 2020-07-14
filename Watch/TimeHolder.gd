@@ -13,6 +13,7 @@ func reset():
 	started = false
 	timeRemaining = START_TIME
 	zero = false
+	paused = false
 
 func getTimeRemaining():
 	return timeRemaining
@@ -33,6 +34,11 @@ func getTimeRemainingLabel():
 func startCounting():
 	started = true
 	start(1)
+	
+func stopCounting():
+	started = false
+	paused = false
+	stop()
 
 func count():
 	timeRemaining -= 1

@@ -1,6 +1,6 @@
 extends Area2D
 
-const ANGLE_DELTA = 0.2
+const ANGLE_DELTA = 0.3
 const MIN_DIST = 100
 
 var acceleration
