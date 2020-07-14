@@ -9,6 +9,11 @@ var zero = false
 func _ready():
 	connect("timeout", self, "count")
 
+func reset():
+	started = false
+	timeRemaining = START_TIME
+	zero = false
+
 func getTimeRemaining():
 	return timeRemaining
 	

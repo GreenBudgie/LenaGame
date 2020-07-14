@@ -1,6 +1,6 @@
 extends Area2D
 
-const ANGLE_DELTA = 0.0003
+const ANGLE_DELTA = 0.2
 const MIN_DIST = 100
 
 var acceleration
@@ -32,7 +32,7 @@ func _process(delta):
 		var lenaAngle = position.angle_to_point(lena.position) + PI
 		if lenaAngle > PI: lenaAngle = lenaAngle - 2 * PI
 		if lena.position.x - position.x > MIN_DIST:
-			angle = move_toward(angle, lenaAngle, ANGLE_DELTA)
+			angle = move_toward(angle, lenaAngle, ANGLE_DELTA * delta)
 	if !collided:
 		rotation = angle
 	else:
